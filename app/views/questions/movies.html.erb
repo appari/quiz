@@ -1,0 +1,30 @@
+<%= form_with(model: question, local: true) do |form| %>
+<p id="notice"><%= notice %></p>
+
+<h1>movies</h1>
+
+    <% if @movies %>
+    <% @movies.each do |movie| %>
+      <tr>
+        <td><%= movie.question %></td>
+        <%= form.radio_button_tag(:movie.option1, "child") %>
+        <td><%= movie.option1 %></td>
+        <td><%= movie.option2 %></td>
+        <td><%= movie.option3 %></td>
+        <td><%= movie.option4 %></td>
+    <% if @user.admin %>
+        <td><%= movie.correct_ans %></td>
+        <td><%= link_to 'Show', movie %></td>
+        <td><%= link_to 'Edit', edit_question_path(movie) %></td>
+        <td><%= link_to 'Destroy', movie, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <%end%>
+      </tr>
+    <% end %>
+
+    <%end%>
+
+<br>
+<% if @user.admin %>
+<%= link_to 'New movie', new_question_path %>
+<%end%>
+<%end%>

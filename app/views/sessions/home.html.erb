@@ -1,0 +1,10 @@
+<h2 class='User_Header'>
+
+    <% if @current_user.admin %>
+    Welcome admin
+        <%=@current_user.username%>
+        <%else%>
+        <li><%= link_to "Start a quiz" ,questions_genres_path, class: "nav_links" %></li>
+    <%end%>
+
+     <h2>

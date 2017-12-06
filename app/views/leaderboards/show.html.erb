@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Genre:</strong>
+  <%= @leaderboard.genre %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @leaderboard.user %>
+</p>
+
+<p>
+  <strong>Subgenre:</strong>
+  <%= @leaderboard.subgenre %>
+</p>
+
+<p>
+  <strong>Question:</strong>
+  <%= @leaderboard.question %>
+</p>
+
+<p>
+  <strong>Total qns:</strong>
+  <%= @leaderboard.total_qns %>
+</p>
+
+<p>
+  <strong>Attempted:</strong>
+  <%= @leaderboard.attempted %>
+</p>
+
+<p>
+  <strong>Score:</strong>
+  <%= @leaderboard.score %>
+</p>
+
+<%= link_to 'Edit', edit_leaderboard_path(@leaderboard) %> |
+<%= link_to 'Back', leaderboards_path %>

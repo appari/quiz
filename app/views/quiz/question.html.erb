@@ -1,0 +1,27 @@
+<h1>
+<% if @multiple %>
+Multiple Correct Answer Type Question
+<%else%>
+Single Correct Answer Type Question
+<%end%>
+<h1>
+<h2>Question <%= @current + 1 %> of <%= @total %></h2>
+<p id="question"><%= @question.question %></p>
+
+<%= form_tag("/quiz/answer", method: "post") do %>
+  <% @choices.each do |choice| %>
+	 <p class="<% choice.id %>">
+		<%= check_box_tag "choice[]" , choice.id  %>
+		<%= label_tag("choice_".concat(choice.id.to_s).to_sym, choice.text) %>
+	 </p>
+  <% end %>
+
+  <div class="center">
+	 <%= submit_tag("Continue", :class => "submit") %>
+  </div>
+<% end %>
+    <%= link_to 'Reset', "/quiz/destroy" %>
+
+<% content_for(:title) do %>
+  Question <%= @current + 1 %> of <%= @total %>
+<% end %>

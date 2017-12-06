@@ -1,0 +1,44 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Questions</h1>
+    
+<%if @user.admin%>
+<table width=100%, border="1" >
+  <thead align="centre">
+    <tr>
+      <th>Question</th>
+      <th>Option1</th>
+      <th>Option2</th>
+      <th>Option3</th>
+      <th>Option4</th>
+      <th>Correct ans</th>
+      <th>Genre</th>
+      <th>Subgenre</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody >
+    <% @questions.each do |question| %>
+      <tr align="right">
+          <td><%= question.question %></td>
+         <%  @choices.where(:question_id => question.id).each do |option| %>
+         <td><%= option.text %></td>
+         <%end%>
+        <td><%= question.correct_ans %></td>
+        <td><%= question.subgenre.genre.genre %></td>
+        <td><%= question.subgenre.name %></td>
+    <% if @user.admin %>
+        <td><%= link_to 'Show', question %></td>
+        <td><%= link_to 'Edit', edit_question_path(question) %></td>
+        <td><%= link_to 'Destroy', question, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <%end%>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<%end%>
+<br>
+<% if @user.admin %>
+<%= link_to 'New Question', new_question_path %>
+<%end%>

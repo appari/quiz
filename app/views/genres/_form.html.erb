@@ -1,0 +1,39 @@
+<%= form_with(model: genre, local: true) do |form| %>
+  <% if genre.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(genre.errors.count, "error") %> prohibited this question from being saved:</h2>
+
+      <ul>
+      <% genre.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :genre %>
+    <%= form.text_area :genre%>
+  </div>
+  <div class="field">
+    <%= form.label :subgenre1 %>
+    <%= form.text_area :subgenre1 %>
+  </div>
+  <div class="field">
+    <%= form.label :subgenre2 %>
+    <%= form.text_area :subgenre2 %>
+  </div>
+  <div class="field">
+    <%= form.label :subgenre3 %>
+    <%= form.text_area :subgenre3 %>
+  </div>
+
+  <div class="field">
+    <%= form.label :description %>
+    <%= form.text_area :description %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  genre: 1
+  user: 1
+  subgenre: 1
+  question: 1
+  total_qns: 1
+  attempted: 1
+  score: 1
+
+two:
+  genre: 1
+  user: 1
+  subgenre: 1
+  question: 1
+  total_qns: 1
+  attempted: 1
+  score: 1

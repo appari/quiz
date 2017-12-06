@@ -1,0 +1,34 @@
+<h2 class='User_Header'><%=@current_user.username%> Profile <h2>
+    <p id="notice"><%= notice %></p>
+
+    <h1>Leaderboard</h1>
+
+    <table width=100% , border="4">
+      <thead>
+        <tr>
+          <th>Genre</th>
+          <th>User</th>
+          <th>Subgenre</th>
+          <th>Question</th>
+          <th>Total qns</th>
+          <th>Attempted</th>
+          <th>Score</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% @leaderboards.each do |leaderboard| %>
+          <tr>
+            <td><%= Genre.find(leaderboard.genre).genre %></td>
+            <td><%= User.find(leaderboard.user).username %></td>
+            <td><%= Subgenre.find(leaderboard.subgenre).name %></td>
+            <td><%= leaderboard.question %></td>
+            <td><%= leaderboard.total_qns %></td>
+            <td><%= leaderboard.attempted %></td>
+            <td><%= leaderboard.score %></td>
+         </tr>
+        <% end %>
+      </tbody>
+    </table>
+
+    <br>

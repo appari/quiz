@@ -1,0 +1,17 @@
+
+<h2 class='User_Header' >
+    Select A Genere
+</h2>
+&nbsp;
+<%Genre.all.each do |genre|%>
+<h2 class='User_Header'>
+    <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#<%= genre.id %>"><%= genre.genre %></button>
+     <div id="<%= genre.id %>" class="collapse">
+         <% Subgenre.where(:genre_id => genre.id).each do |x| %>
+        <%= link_to x.name ,"/genres/#{x.name}",subgenre: x.name, class: "nav_links" %>
+        <%end%>
+
+    </div>
+</h2>
+&nbsp;
+<%end%>

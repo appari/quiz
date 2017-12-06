@@ -1,0 +1,91 @@
+<%= form_with(model: question, local: true) do |form| %>
+<% if question.errors.any? %>
+<div id="error_explanation">
+    <h2><%= pluralize(question.errors.count, "error") %> prohibited this question from being saved:</h2>
+
+    <ul>
+        <% question.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+        <% end %>
+    </ul>
+</div>
+<% end %>
+
+<div class="field">
+    <%= form.label :question %><br />
+    <%= form.text_area :question, :size => "50x3" %>
+</div>
+
+<div class="field">
+    <%= form.label :option1 %><br />
+    <%= form.text_area :option1, :size => "50x3" %>
+</div>
+
+<div class="field">
+    <%= form.label :option2 %><br />
+    <%= form.text_area :option2, :size => "50x3" %>
+</div>
+
+<div class="field">
+    <%= form.label :option3 %><br />
+    <%= form.text_area :option3, :size => "50x3" %>
+</div>
+
+<div class="field">
+    <%= form.label :option4 %><br />
+    <%= form.text_area :option4, :size => "50x3" %>
+</div>
+
+<div class="field">
+    <%= form.label :a %><br />
+    <%= form.check_box :a,{},"a",""  %>
+</div>
+
+<div class="field">
+    <%= form.label :b %><br />
+    <%= form.check_box :b,{},"b",""  %>
+</div>
+
+<div class="field">
+    <%= form.label :c %><br />
+    <%= form.check_box :c,{},"c",""  %>
+</div>
+
+<div class="field">
+    <%= form.label :d %><br />
+    <%= form.check_box :d,{},"d","" %>
+</div>
+
+<div class="field">
+    <%= form.label :genre %>
+    <%= form.collection_select(:genre, Genre.all, :id, :genre ) %>
+</div>
+<div class="field">
+    <%= form.label :subgenre %>
+    <%= form.collection_select(:subgenre ,Subgenre.all, :id, :name ) %>
+</div>
+<div class="actions">
+    <%= form.submit %>
+</div>
+<% end %>
+<% if flash[:color]== "valid" %>
+    <div class="valid_notice">
+        <p><%= flash[:notice]%></p>
+    </div>
+<% elsif flash[:color]== "invalid"%>
+    <div class="invalid_notice">
+        <p><%=flash[:notice]%></p>
+    </div>
+<%else%>
+    <div class="notice">
+        <p><%=flash[:notice]%></p>
+    </div>
+<%end%>
+
+  <% if question.errors.any? %>
+	<ul class="Signup_Errors">
+		<% for message_error in question.errors.full_messages %>
+			<li>* <%= message_error %></li>
+	  	<% end %>
+	</ul>
+  <% end %>

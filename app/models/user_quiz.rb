@@ -1,0 +1,2 @@
+class UserQuiz < ApplicationRecord
+end

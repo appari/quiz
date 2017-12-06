@@ -1,0 +1,59 @@
+<p id="notice"><%= notice %></p>
+
+<h1>sports</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>sport</th>
+      <th>Option1</th>
+      <th>Option2</th>
+      <th>Option3</th>
+      <th>Option4</th>
+      <th>Correct ans</th>
+      <th>Genre</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+
+    <%if @sports%>
+    <% @sports.each do |sport| %>
+      <tr>
+        <%= sport.question %>
+        <%= sport.option1 %>
+        <%= sport.option2 %>
+        <%= sport.option3 %>
+        <%= sport.option4 %>
+        <% if @user.admin %>
+        <%= sport.correct_ans %>
+        <%= link_to 'Show', sport %>
+        <%= link_to 'Edit', edit_question_path(sport) %>
+        <%= link_to 'Destroy', sport, method: :delete, data: { confirm: 'Are you sure?' } %>
+    <%end%>
+    <% end %>
+    <%end%>
+
+<br>
+<% if @user.admin %>
+<%= link_to 'New sport', new_question_path %>
+<%end%>
+
+<h1>Question </h1>
+<p id="question"><%= @question.text %></p>
+<%= form_tag({:controller => "quiz", :action => "answer"}) do %>
+  <% @choices.each do |choice| %>
+	 <p class="choice">
+		<%= radio_button_tag(:choice, choice.id) %>
+		<%= label_tag("choice_".concat(choice.id.to_s).to_sym, choice.text) %>
+	 </p>
+  <% end %>
+
+  <div class="center">
+	 <%= submit_tag("Continue", :class => "submit") %>
+  </div>
+<% end %>
+
+<% content_for(:title) do %>
+  Question <%= @current + 1 %> of <%= @total %>
+<% end %>

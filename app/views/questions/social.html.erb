@@ -1,0 +1,44 @@
+<p id="notice"><%= notice %></p>
+
+<h1>socials</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>social</th>
+      <th>Option1</th>
+      <th>Option2</th>
+      <th>Option3</th>
+      <th>Option4</th>
+      <th>Correct ans</th>
+      <th>Genre</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+     <%if @social%>
+    <% @social.each do |s| %>
+      <tr>
+        <td><%= s.question %></td>
+        <td><%= s.option1 %></td>
+        <td><%= s.option2 %></td>
+        <td><%= s.option3 %></td>
+        <td><%= s.option4 %></td>
+
+    <% if @user.admin %>
+        <td><%= s.correct_ans %></td>
+        <td><%= link_to 'Show', social %></td>
+        <td><%= link_to 'Edit', edit_question_path(social) %></td>
+        <td><%= link_to 'Destroy', social, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <%end%>
+    <%end%>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+<% if @user.admin %>
+<%= link_to 'New social', new_question_path %>
+<%end%>

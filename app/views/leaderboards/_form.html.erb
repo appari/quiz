@@ -1,0 +1,52 @@
+<%= form_with(model: leaderboard, local: true) do |form| %>
+  <% if leaderboard.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(leaderboard.errors.count, "error") %> prohibited this leaderboard from being saved:</h2>
+
+      <ul>
+      <% leaderboard.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :genre %>
+    <%= form.number_field :genre, id: :leaderboard_genre %>
+  </div>
+
+  <div class="field">
+    <%= form.label :user %>
+    <%= form.number_field :user, id: :leaderboard_user %>
+  </div>
+
+  <div class="field">
+    <%= form.label :subgenre %>
+    <%= form.number_field :subgenre, id: :leaderboard_subgenre %>
+  </div>
+
+  <div class="field">
+    <%= form.label :question %>
+    <%= form.number_field :question, id: :leaderboard_question %>
+  </div>
+
+  <div class="field">
+    <%= form.label :total_qns %>
+    <%= form.number_field :total_qns, id: :leaderboard_total_qns %>
+  </div>
+
+  <div class="field">
+    <%= form.label :attempted %>
+    <%= form.number_field :attempted, id: :leaderboard_attempted %>
+  </div>
+
+  <div class="field">
+    <%= form.label :score %>
+    <%= form.number_field :score, id: :leaderboard_score %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

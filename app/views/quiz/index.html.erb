@@ -1,0 +1,18 @@
+
+
+<%= form_tag("/quiz/start", method: "post") do %>
+  <div class="center">
+      <% if !@continue %>
+      <h1>Start Quiz</h1>
+	 <%= submit_tag "Start!", :class => "submit"%>
+     <%else%>
+     <h1>Continue Quiz</h1>
+     <h3>You have left the quiz in the middle</h3>
+     <%= submit_tag "Continue!", :class => "submit"%>
+     <%= link_to 'Reset', "/quiz/destroy" %>
+     <%end%>
+  </div>
+<% end %>
+<% content_for(:title) do %>
+  Start Quiz
+<% end %>
